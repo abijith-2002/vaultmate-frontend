@@ -6,6 +6,7 @@ import RegisterPage from './pages/auth/RegisterPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import ApiStatusIndicator from './components/ApiStatusIndicator';
 import SupabaseConfigPanel from './components/SupabaseConfigPanel';
+import VaultPage from './pages/vault/VaultPage';
 
 /**
  * Minimal layout that centers content. Uses palette variables.
@@ -123,7 +124,11 @@ function AppRoutes() {
         path="/vault"
         element={
           <GuardForAuthed>
-            <AuthedHome />
+            <CenteredLayout>
+              <div className="container" style={{ maxWidth: '100%', padding: 0 }}>
+                <VaultPage />
+              </div>
+            </CenteredLayout>
           </GuardForAuthed>
         }
       />
