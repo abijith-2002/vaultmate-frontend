@@ -46,11 +46,11 @@ export function AuthProvider({ children }) {
   useEffect(() => { loadProfile(); }, [loadProfile]);
 
   // PUBLIC_INTERFACE
-  async function login({ email, password, mfa_otp }) {
-    /** Login. If MFA required, backend may return tokens with step-up. */
+  async function login({ email, password }) {
+    /** Login with email and password only. */
     setLoading(true); setError(null);
     try {
-      const pair = await apiPost('/auth/login', { email, password, mfa_otp }, false);
+      const pair = await apiPost('/auth/login', { email, password }, false);
       localStorage.setItem('vm_access', pair.access_token);
       localStorage.setItem('vm_refresh', pair.refresh_token);
       await loadProfile();

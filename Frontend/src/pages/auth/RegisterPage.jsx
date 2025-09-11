@@ -25,15 +25,15 @@ export default function RegisterPage() {
       {msg && <div className="alert info">{msg}</div>}
       <div className="form-field">
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
+        <input id="email" type="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" />
       </div>
       <div className="form-field">
         <label htmlFor="password">Password (min 8 chars)</label>
-        <input id="password" type="password" required minLength={8} value={password} onChange={e=>setPassword(e.target.value)} placeholder="At least 8 characters" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
+        <input id="password" type="password" required minLength={8} value={password} onChange={e=>setPassword(e.target.value)} placeholder="At least 8 characters" />
       </div>
       <div className="form-field">
         <label htmlFor="fullName">Full name (optional)</label>
-        <input id="fullName" value={fullName} onChange={e=>setFullName(e.target.value)} placeholder="Jane Doe" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
+        <input id="fullName" value={fullName} onChange={e=>setFullName(e.target.value)} placeholder="Jane Doe" />
       </div>
       <button className="btn full" type="submit" disabled={loading} aria-busy={loading}>
         {loading ? 'Creating…' : 'Create Account'}
