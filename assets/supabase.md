@@ -2,6 +2,13 @@
 
 This frontend uses Supabase Auth via @supabase/supabase-js.
 
+IMPORTANT: Environment variables must be provided. At minimum:
+- REACT_APP_SUPABASE_URL
+- REACT_APP_SUPABASE_ANON_KEY
+- REACT_APP_SITE_URL (recommended for consistent auth redirects)
+
+See Frontend/.env.example for a template.
+
 Environment variables:
 - REACT_APP_SUPABASE_URL: Supabase project URL (e.g., https://xyzcompany.supabase.co)
 - REACT_APP_SUPABASE_ANON_KEY: Supabase public anon key
