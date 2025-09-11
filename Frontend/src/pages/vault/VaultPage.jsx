@@ -31,7 +31,7 @@ function VaultsLayout() {
       {/* Left pane: vault list */}
       <aside className="vaults-pane" aria-label="Vaults">
         <div className="pane-header">
-          <h3 style={{ margin: 0 }}>Your Vaults</h3>
+          <h3 style={{ margin: 0, lineHeight: 1.2 }}>Your Vaults</h3>
           <button className="btn muted" onClick={reloadVaults} aria-busy={loading} title="Reload vaults">↻</button>
         </div>
         {error && <div className="alert error" style={{ marginTop: 8 }}>{error}</div>}
@@ -55,9 +55,13 @@ function VaultsLayout() {
       {/* Right pane: items within selected vault */}
       <main className="items-pane" aria-label="Vault items">
         <div className="pane-header">
-          <div>
-            <h2 style={{ margin: 0 }}>{selectedVault?.name || 'Select a vault'}</h2>
-            {selectedVault?.description && <div className="text-muted" style={{ marginTop: 2 }}>{selectedVault.description}</div>}
+          <div style={{ minWidth: 0 }}>
+            <h2 style={{ margin: 0, lineHeight: 1.2 }}>{selectedVault?.name || 'Select a vault'}</h2>
+            {selectedVault?.description && (
+              <div className="text-muted" style={{ marginTop: 4 }}>
+                {selectedVault.description}
+              </div>
+            )}
           </div>
           <div className="pane-actions">
             <Link to="/vault/new" className="btn">+ Add Item</Link>
