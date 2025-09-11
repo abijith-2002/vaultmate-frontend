@@ -64,10 +64,10 @@ export function AuthProvider({ children }) {
   }
 
   // PUBLIC_INTERFACE
-  async function register({ email, password, full_name, admin_invite_code }) {
+  async function register({ email, password, full_name }) {
     setLoading(true); setError(null);
     try {
-      await apiPost('/auth/register', { email, password, full_name, admin_invite_code }, false);
+      await apiPost('/auth/register', { email, password, full_name }, false);
       // Auto-login after registration
       return await login({ email, password });
     } catch (e) {

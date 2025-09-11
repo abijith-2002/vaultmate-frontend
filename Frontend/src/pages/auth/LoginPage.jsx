@@ -26,15 +26,15 @@ export default function LoginPage() {
 
       <div className="form-field">
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} required placeholder="you@example.com" />
+        <input id="email" type="email" autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} required placeholder="you@example.com" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
       </div>
       <div className="form-field">
         <label htmlFor="password">Password</label>
-        <input id="password" type="password" autoComplete="current-password" value={password} onChange={e=>setPassword(e.target.value)} required placeholder="••••••••" />
+        <input id="password" type="password" autoComplete="current-password" value={password} onChange={e=>setPassword(e.target.value)} required placeholder="••••••••" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
       </div>
       <div className="form-field">
         <label htmlFor="otp">MFA OTP (if enabled)</label>
-        <input id="otp" inputMode="numeric" pattern="[0-9]*" value={otp} onChange={e=>setOtp(e.target.value)} aria-describedby="otp-help" placeholder="123456" />
+        <input id="otp" inputMode="numeric" pattern="[0-9]*" value={otp} onChange={e=>setOtp(e.target.value)} aria-describedby="otp-help" placeholder="123456" style={{ fontFamily: "'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif" }} />
         <span id="otp-help" className="visually-hidden">Enter one time passcode from your authenticator if your account has MFA enabled.</span>
       </div>
       <button className="btn full" type="submit" disabled={loading} aria-busy={loading}>
