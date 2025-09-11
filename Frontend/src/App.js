@@ -4,13 +4,16 @@ import './index.css';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import ApiStatusIndicator from './components/ApiStatusIndicator';
 
 /**
  * Minimal layout that centers content. Uses palette variables.
+ * Includes the top-right online/offline status indicator.
  */
 function CenteredLayout({ children }) {
   return (
-    <div className="center">
+    <div className="center" style={{ position: 'relative' }}>
+      <ApiStatusIndicator pollIntervalMs={10000} />
       <div className="container">
         <header style={{marginBottom: 18, display: 'flex', justifyContent: 'center'}}>
           <Link to="/" style={{ textDecoration: 'none' }}>
