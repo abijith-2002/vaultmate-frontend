@@ -49,6 +49,21 @@ a:hover { text-decoration: underline; }
   padding: 24px;
 }
 
+/* Fluid container for full-bleed pages (e.g., /vault) */
+.container-fluid {
+  /* nearly full viewport width with a small gutter */
+  width: min(1440px, 96vw);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Full bleed app wrapper (avoids "center" grid constraints) */
+.full-bleed {
+  min-height: 100vh;
+  display: block;
+  padding: 8px 0; /* small vertical breathing room */
+}
+
 .stack { display: flex; flex-direction: column; gap: 12px; }
 .center { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
 
@@ -194,6 +209,13 @@ button, .btn {
   gap: 14px;
   min-height: calc(100vh - 40px);
   padding: 14px;
+}
+
+/* slightly roomier left pane on large screens */
+@media (min-width: 1200px) {
+  .vault-two-pane {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
 }
 
 .vaults-pane,

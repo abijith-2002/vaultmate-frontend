@@ -36,6 +36,37 @@ function CenteredLayout({ children }) {
   );
 }
 
+/**
+ * Full-bleed app shell used for pages that should span the viewport width (e.g., /vault).
+ * Provides the same header/footer and indicators, but without the narrow container.
+ */
+function FullWidthLayout({ children }) {
+  return (
+    <div className="layout-root full-bleed">
+      <ApiStatusIndicator pollIntervalMs={10000} />
+      <div className="container-fluid">
+        <header style={{ marginBottom: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+              <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--text)' }}>VaultMate</span>
+              <span className="text-muted" style={{ fontSize: '0.95rem' }}>Security</span>
+            </div>
+          </Link>
+          <nav aria-label="Quick links" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <Link to="/help" className="btn muted">Help</Link>
+            <Link to="/settings" className="btn secondary">Settings</Link>
+          </nav>
+        </header>
+        {children}
+        <footer style={{ marginTop: 16, textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          <span>Secure by design • MFA ready</span>
+        </footer>
+      </div>
+      <SupabaseConfigPanel />
+    </div>
+  );
+}
+
 function GuardToLogin({ children }) {
   const { isAuthed } = useAuth();
   // If already authenticated, do not show auth pages; send to app home
@@ -124,11 +155,9 @@ function AppRoutes() {
         path="/vault"
         element={
           <GuardForAuthed>
-            <CenteredLayout>
-              <div className="container" style={{ maxWidth: '100%', padding: 0 }}>
-                <VaultPage />
-              </div>
-            </CenteredLayout>
+            <FullWidthLayout>
+              <VaultPage />
+            </FullWidthLayout>
           </GuardForAuthed>
         }
       />
