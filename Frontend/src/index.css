@@ -1,4 +1,4 @@
-/* Import Figtree */
+ /* Import Figtree */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
 
 :root {
@@ -280,4 +280,71 @@ button, .btn {
   .vaults-pane { order: 1; }
   .items-pane { order: 2; }
   .table th, .table td { white-space: normal; } /* allow wrap on small screens */
+}
+
+/* —— Enhancements for the redesigned Vault page —— */
+
+/* Compact toolbar row above tables/search */
+.toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Icon-only small buttons */
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--muted-surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .04s ease;
+  padding: 0;
+}
+.icon-btn.small {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.icon-btn:hover { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); }
+.icon-btn:active { transform: translateY(1px); }
+
+/* Badge for counts */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text);
+  background: rgba(138,162,158,0.15);
+  border: 1px solid rgba(138,162,158,0.45);
+}
+
+/* Empty state block inside tables/cards */
+.empty-state {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 22px 12px;
+  text-align: center;
+}
+
+/* Modal backdrop is handled inline in component; no extra CSS required */
+
+/* Button variants for broader usage */
+.btn.danger {
+  background: #c9444a;
+  border-color: rgba(201, 68, 74, 0.5);
+}
+.btn.success {
+  background: #2fa572;
+  border-color: rgba(47, 165, 114, 0.5);
 }
