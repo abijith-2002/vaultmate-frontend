@@ -20,35 +20,29 @@ export default function RegisterPage() {
   }
 
   return (
-    <section className="grid">
-      <div className="card">
-        <h2>Create your VaultMate account</h2>
-        {error && <div className="alert error" role="alert">{error}</div>}
-        {msg && <div className="alert info">{msg}</div>}
-        <form onSubmit={onSubmit} className="grid" style={{gap:'0.75rem'}}>
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input id="email" type="email" required value={email} onChange={e=>setEmail(e.target.value)} />
-          </div>
-          <div className="form-field">
-            <label htmlFor="password">Password (min 8 chars)</label>
-            <input id="password" type="password" required minLength={8} value={password} onChange={e=>setPassword(e.target.value)} />
-          </div>
-          <div className="form-field">
-            <label htmlFor="fullName">Full name (optional)</label>
-            <input id="fullName" value={fullName} onChange={e=>setFullName(e.target.value)} />
-          </div>
-          <div className="form-field">
-            <label htmlFor="invite">Admin invite code (optional)</label>
-            <input id="invite" value={invite} onChange={e=>setInvite(e.target.value)} />
-          </div>
-          <div>
-            <button className="btn" type="submit" disabled={loading} aria-busy={loading}>
-              {loading ? 'Creating…' : 'Create Account'}
-            </button>
-          </div>
-        </form>
+    <form onSubmit={onSubmit} className="stack" aria-labelledby="register-title">
+      <h1 id="register-title" className="visually-hidden">Register</h1>
+      {error && <div className="alert error" role="alert">{error}</div>}
+      {msg && <div className="alert info">{msg}</div>}
+      <div className="form-field">
+        <label htmlFor="email">Email</label>
+        <input id="email" type="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" />
       </div>
-    </section>
+      <div className="form-field">
+        <label htmlFor="password">Password (min 8 chars)</label>
+        <input id="password" type="password" required minLength={8} value={password} onChange={e=>setPassword(e.target.value)} placeholder="At least 8 characters" />
+      </div>
+      <div className="form-field">
+        <label htmlFor="fullName">Full name (optional)</label>
+        <input id="fullName" value={fullName} onChange={e=>setFullName(e.target.value)} placeholder="Jane Doe" />
+      </div>
+      <div className="form-field">
+        <label htmlFor="invite">Admin invite code (optional)</label>
+        <input id="invite" value={invite} onChange={e=>setInvite(e.target.value)} placeholder="Enter code if provided" />
+      </div>
+      <button className="btn full" type="submit" disabled={loading} aria-busy={loading}>
+        {loading ? 'Creating…' : 'Create Account'}
+      </button>
+    </form>
   );
 }
