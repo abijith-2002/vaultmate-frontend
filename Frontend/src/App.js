@@ -37,8 +37,34 @@ function CenteredLayout({ children }) {
 
 function GuardToLogin({ children }) {
   const { isAuthed } = useAuth();
-  if (isAuthed) return <Navigate to="/login" replace />;
+  // If already authenticated, do not show auth pages; send to app home
+  if (isAuthed) return <Navigate to="/vault" replace />;
   return children;
+}
+
+function GuardForAuthed({ children }) {
+  const { isAuthed } = useAuth();
+  if (!isAuthed) return <Navigate to="/login" replace />;
+  return children;
+}
+
+// Minimal authenticated landing content
+function AuthedHome() {
+  return (
+    <CenteredLayout>
+      <div className="card stack">
+        <div>
+          <h2>Welcome to VaultMate</h2>
+          <p className="subtitle">You’re signed in. Use the app to manage your vault.</p>
+        </div>
+        <div className="row">
+          <Link to="/vault" className="btn">Open Vault</Link>
+          <Link to="/settings" className="btn secondary">Settings</Link>
+          <Link to="/help" className="btn muted">Help</Link>
+        </div>
+      </div>
+    </CenteredLayout>
+  );
 }
 
 function AppRoutes() {
@@ -90,6 +116,15 @@ function AppRoutes() {
               </div>
             </CenteredLayout>
           </GuardToLogin>
+        }
+      />
+      {/* Authenticated routes */}
+      <Route
+        path="/vault"
+        element={
+          <GuardForAuthed>
+            <AuthedHome />
+          </GuardForAuthed>
         }
       />
       <Route path="*" element={<Navigate to="/login" replace />} />
