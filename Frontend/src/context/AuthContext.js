@@ -78,8 +78,9 @@ export function AuthProvider({ children }) {
       return { ok: true, data };
     } catch (e) {
       const message = e?.message || 'Login failed';
-      setError(message);
-      return { ok: false, error: message };
+      const hint = 'If you see "Invalid API key", open the Supabase panel (bottom-left) and ensure project URL and anon key are correct.';
+      setError(`${message}. ${hint}`);
+      return { ok: false, error: `${message}. ${hint}` };
     } finally {
       setLoading(false);
     }
@@ -106,8 +107,9 @@ export function AuthProvider({ children }) {
       return { ok: true, data };
     } catch (e) {
       const message = e?.message || 'Registration failed';
-      setError(message);
-      return { ok: false, error: message };
+      const hint = 'If you see "Invalid API key", open the Supabase panel (bottom-left) and ensure project URL and anon key are correct.';
+      setError(`${message}. ${hint}`);
+      return { ok: false, error: `${message}. ${hint}` };
     } finally {
       setLoading(false);
     }

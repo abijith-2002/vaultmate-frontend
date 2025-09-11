@@ -5,6 +5,7 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import ApiStatusIndicator from './components/ApiStatusIndicator';
+import SupabaseConfigPanel from './components/SupabaseConfigPanel';
 
 /**
  * Minimal layout that centers content. Uses palette variables.
@@ -29,6 +30,7 @@ function CenteredLayout({ children }) {
           <span>Secure by design • MFA ready</span>
         </footer>
       </div>
+      <SupabaseConfigPanel />
     </div>
   );
 }
