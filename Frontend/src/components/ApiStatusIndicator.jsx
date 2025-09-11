@@ -70,31 +70,16 @@ export default function ApiStatusIndicator({ pollIntervalMs = 10000 }) {
         onClick={onOpen}
         aria-label={`Backend status: ${badgeText}. Click to configure API base URL.`}
         title={`Backend status: ${badgeText}`}
+        className="api-indicator"
         style={{
-          position: 'absolute',
-          top: 12,
-          right: 12,
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-          padding: '8px 12px',
-          borderRadius: 999,
           border: `1px solid ${online ? 'rgba(138,162,158,0.45)' : 'rgba(255,80,80,0.35)'}`,
-          background: 'var(--muted-surface)',
-          color: 'var(--text)',
-          cursor: 'pointer',
-          fontFamily: 'Figtree, system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Arial, sans-serif',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
         }}
       >
         <span
           aria-hidden="true"
+          className="dot"
           style={{
-            width: 10,
-            height: 10,
-            borderRadius: 999,
             background: checking ? 'linear-gradient(90deg, var(--accent), var(--primary))' : badgeColor,
-            display: 'inline-block',
             boxShadow: online ? '0 0 0 3px rgba(138,162,158,0.25)' : '0 0 0 3px rgba(201,68,74,0.2)',
           }}
         />

@@ -12,19 +12,20 @@ import ApiStatusIndicator from './components/ApiStatusIndicator';
  */
 function CenteredLayout({ children }) {
   return (
-    <div className="center" style={{ position: 'relative' }}>
+    <div className="center layout-root">
+      {/* Keep indicator visually top-right without stretching */}
       <ApiStatusIndicator pollIntervalMs={10000} />
       <div className="container">
-        <header style={{marginBottom: 18, display: 'flex', justifyContent: 'center'}}>
+        <header style={{ marginBottom: 18, display: 'flex', justifyContent: 'center' }}>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <div style={{display:'flex', alignItems:'baseline', gap:8}}>
-              <span style={{fontWeight:700, fontSize:'1.25rem', color:'var(--text)'}}>VaultMate</span>
-              <span className="text-muted" style={{fontSize:'0.95rem'}}>Security</span>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+              <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--text)' }}>VaultMate</span>
+              <span className="text-muted" style={{ fontSize: '0.95rem' }}>Security</span>
             </div>
           </Link>
         </header>
         {children}
-        <footer style={{marginTop: 16, textAlign:'center', color:'var(--text-muted)', fontSize:'0.9rem'}}>
+        <footer style={{ marginTop: 16, textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
           <span>Secure by design • MFA ready</span>
         </footer>
       </div>

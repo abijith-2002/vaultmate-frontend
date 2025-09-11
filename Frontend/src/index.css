@@ -52,6 +52,48 @@ a:hover { text-decoration: underline; }
 .stack { display: flex; flex-direction: column; gap: 12px; }
 .center { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
 
+/* Layout root ensures the indicator can anchor to the viewport edge safely */
+.layout-root { position: relative; }
+
+/* Api status indicator placement and sizing */
+.api-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--muted-surface);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Figtree', system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  width: auto;            /* prevent full-width stretch */
+  max-width: 90vw;        /* safety on very small screens */
+  white-space: nowrap;    /* keep compact */
+}
+
+/* Small status dot used inside the indicator */
+.api-indicator .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Adjust spacing on small screens */
+@media (max-width: 768px) {
+  .api-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 7px 10px;
+    gap: 6px;
+  }
+}
+
 /* Card */
 .card {
   width: 100%;
