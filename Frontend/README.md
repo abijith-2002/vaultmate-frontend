@@ -27,6 +27,16 @@ Launches the test runner in interactive watch mode.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Auth with Supabase
+
+This frontend uses Supabase Auth for signup and login. Configure the following environment variables:
+
+- REACT_APP_SUPABASE_URL
+- REACT_APP_SUPABASE_ANON_KEY
+- (optional) REACT_APP_API_BASE for non-auth backend APIs
+
+See README_AUTH.md for details and Frontend/.env.example for a template.
+
 ## Customization
 
 ### Colors

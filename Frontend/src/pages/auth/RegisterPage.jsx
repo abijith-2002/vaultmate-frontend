@@ -16,6 +16,7 @@ export default function RegisterPage() {
     e.preventDefault();
     const res = await register({ email, password, full_name: fullName || null });
     if (!res.ok) setMsg(res.error || 'Registration failed');
+    else setMsg('Account created. Check your email to confirm (if required), then sign in.');
   }
 
   return (

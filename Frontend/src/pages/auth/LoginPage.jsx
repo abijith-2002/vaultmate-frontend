@@ -34,6 +34,7 @@ export default function LoginPage() {
       <button className="btn full" type="submit" disabled={loading} aria-busy={loading}>
         {loading ? 'Signing in…' : 'Sign In'}
       </button>
+      <small className="text-muted">If your project requires email confirmation, verify your email before logging in.</small>
     </form>
   );
 }

@@ -1,22 +1,24 @@
-# VaultMate Frontend Auth (Minimal)
+# Supabase Auth Integration (Frontend)
 
-This UI provides minimal Login and Signup pages, styled with:
-- Colors: rich-black (#131b23), indian-red (#c1666b), cambridge-blue (#8aa29e)
-- Font: Figtree (Google Fonts)
-- Tokens stored in localStorage: vm_access, vm_refresh
+This frontend is configured to use Supabase Auth for user registration and login.
 
-Configure API base:
-- Option 1: Set REACT_APP_API_BASE in environment (e.g., http://localhost:8000)
-- Option 2: At runtime via localStorage key vm_api_base
+What changed:
+- Replaced custom FastAPI auth calls with Supabase Auth via @supabase/supabase-js.
+- AuthContext now uses supabase.auth (signUp, signInWithPassword, signOut, getSession).
+- Tokens are managed by the Supabase SDK; vm_access/vm_refresh are no longer used.
+- MFA flows against the backend are disabled in this UI (placeholders will throw an error).
 
-Endpoints wired:
-- POST /auth/login  body { email, password, mfa_otp? }
-- POST /auth/register body { email, password, full_name?, admin_invite_code? }
+Environment variables:
+- REACT_APP_SUPABASE_URL: Your Supabase project URL
+- REACT_APP_SUPABASE_ANON_KEY: Your Supabase anonymous public key
+- REACT_APP_API_BASE (optional): Backend base URL for non-auth endpoints
 
-Pages:
-- /login (default)
-- /register
+At runtime, you can override Supabase config via localStorage:
+- vm_supabase_url
+- vm_supabase_key
+
+Example .env is provided in Frontend/.env.example.
 
 Notes:
-- All typography uses Figtree.
-- Background uses rich-black, surfaces are dark, buttons use indian-red, accents use cambridge-blue.
+- If your Supabase project requires email confirmation, users must verify their email before sign-in.
+- To customize auth email redirect, set REACT_APP_SITE_URL and update the commented emailRedirectTo in AuthContext register.
